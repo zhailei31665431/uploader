@@ -1446,15 +1446,20 @@
          */
         createIFrame: function(uniqueId) {
 
+            var self = this;
             // Create the iFrame
             var iFrame = $("<iframe src='javascript:false;' name='" + uniqueId + "_iframe' id='" + uniqueId + "_iframe'/>").css("display", "none").appendTo(document.body);
 
             // Listen to iFrame's `onload` event
-            iFrame.off().on("load", $.proxy(function() {
+            // iFrame.off().on("load", $.proxy(function() {
 
-                // Get the response from the server in plain text
-                this.readIframe(uniqueId, iFrame);
-            }, this));
+            //     // Get the response from the server in plain text
+            //     this.readIframe(uniqueId, iFrame);
+            // }, this));
+            // 
+            iFrame[0].onload = function(){
+                self.readIframe(uniqueId, iFrame);
+            }
 
             return iFrame;
         },
