@@ -747,7 +747,7 @@
             $.each(files, $.proxy(function(i, file) {
 
                 // Get the filename
-                var fileName = this.isModernBrowser ? file.name : this.getFileName(file.val());
+                var fileName = this.isModernBrowser ? file.name : this.getFileName($(file).val());
 
                 // Make sure the max files limit wasn't reached yet
                 if ( ! $.isNumeric(this.options.maxFiles) || this.fileCount < this.options.maxFiles) {
